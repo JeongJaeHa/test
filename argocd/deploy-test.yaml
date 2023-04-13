@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: test
+  template:
+    metadata:
+      name: test
+      labels:
+        tier: test
+    spec:
+      containers:
+        - name: aws-test
+          image: jeongjaeha/jenkins:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
